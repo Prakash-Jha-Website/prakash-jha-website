@@ -224,7 +224,7 @@
     }
 
     section {
-      padding: 30px 0;
+      padding: 25px 0;
     }
 
     .section-title p {
@@ -238,6 +238,44 @@
       font-size: 24px;
       color: #fff;
       margin-bottom: 18px;
+    }
+
+    /* --- ANIMATED COUNTERS STYLING --- */
+    .counter-section {
+      padding: 10px 0 25px;
+    }
+
+    .counter-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .counter-box {
+      background: linear-gradient(145deg, #111a2e, #0b1329);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px 10px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .counter-number {
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--accent-green);
+      line-height: 1.1;
+      margin-bottom: 6px;
+      font-family: monospace, sans-serif;
+    }
+
+    .counter-label {
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin: 0;
     }
 
     /* CARDS */
@@ -261,31 +299,6 @@
       padding: 8px 0;
       border-bottom: 1px solid var(--border-color);
       font-size: 13px;
-    }
-
-    .stats-row {
-      display: flex;
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .stats-row div {
-      background: rgba(255, 255, 255, 0.04);
-      padding: 10px;
-      border-radius: 8px;
-      text-align: center;
-      flex: 1;
-    }
-
-    .stats-row b {
-      display: block;
-      font-size: 20px;
-      color: var(--accent-green);
-    }
-
-    .stats-row small {
-      font-size: 10px;
-      color: var(--text-muted);
     }
 
     /* EXP */
@@ -468,6 +481,28 @@
   </header>
 
   <main>
+    <!-- 📊 ANIMATED EXPERIENCE COUNTERS -->
+    <section id="metrics" class="counter-section">
+      <div class="counter-grid">
+        <div class="counter-box">
+          <div class="counter-number"><span class="counter" data-target="8">0</span>+</div>
+          <p class="counter-label">Years Experience</p>
+        </div>
+        <div class="counter-box">
+          <div class="counter-number"><span class="counter" data-target="4">0</span></div>
+          <p class="counter-label">Organizations</p>
+        </div>
+        <div class="counter-box">
+          <div class="counter-number"><span class="counter" data-target="100">0</span>%</div>
+          <p class="counter-label">Ops Secured</p>
+        </div>
+        <div class="counter-box">
+          <div class="counter-number"><span class="counter" data-target="24">0</span>/7</div>
+          <p class="counter-label">Surveillance</p>
+        </div>
+      </div>
+    </section>
+
     <section id="about">
       <div class="section-title">
         <p>ABOUT ME</p>
@@ -488,11 +523,6 @@
           Security professional with <strong>8+ years</strong> of experience across
           physical security and electronic security environments.
         </p>
-        <div class="stats-row">
-          <div><b>8+</b><small>Years Exp</small></div>
-          <div><b>4</b><small>Companies</small></div>
-          <div><b>B.Sc.</b><small>Education</small></div>
-        </div>
       </div>
     </section>
 
@@ -573,6 +603,7 @@
       <div class="quick-connect-box">
         <h3 style="color: #fff; margin-bottom: 8px;">Direct Communication</h3>
         <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 16px;">Available for corporate security operations.</p>
+        <!-- apna mobile number yahan check karein -->
         <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Prakash,%20I%20visited%20your%20security%20portfolio." target="_blank" class="btn-whatsapp">
           💬 Chat on WhatsApp
         </a>
@@ -594,6 +625,46 @@
   <footer>
     <p>© 2026 Prakash Jha. All rights reserved.</p>
   </footer>
+
+  <!-- 🚀 COUNTERS ANIMATION JAVASCRIPT -->
+  <script>
+    const counters = document.querySelectorAll('.counter');
+    let animated = false;
+
+    const animateCounters = () => {
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        let count = 0;
+        const stepTime = target > 50 ? 20 : 150;
+
+        const updateCount = () => {
+          const increment = Math.ceil(target / 25);
+          if (count < target) {
+            count = Math.min(count + increment, target);
+            counter.innerText = count;
+            setTimeout(updateCount, stepTime);
+          } else {
+            counter.innerText = target;
+          }
+        };
+        updateCount();
+      });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          animateCounters();
+        }
+      });
+    }, { threshold: 0.2 });
+
+    const counterSection = document.querySelector('#metrics');
+    if (counterSection) {
+      observer.observe(counterSection);
+    }
+  </script>
 
 </body>
 </html>
