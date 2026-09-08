@@ -320,7 +320,7 @@
       text-decoration: none;
     }
 
-    /* --- 🕒 CAREER TIMELINE STYLING --- */
+    /* --- CAREER TIMELINE STYLING --- */
     .timeline-container {
       position: relative;
       margin: 20px 0 10px 10px;
@@ -410,32 +410,121 @@
       border-radius: 8px;
     }
 
-    /* GALLERY */
-    .moments-gallery {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+    /* --- 📸 FULLSCREEN PHOTO GALLERY STYLING --- */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
     }
 
-    .moments-gallery figure {
+    .gallery-item {
+      position: relative;
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 12px;
       overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-blue);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(0deg, rgba(10, 15, 29, 0.95), transparent);
+      padding: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .gallery-caption {
+      font-size: 13px;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .gallery-zoom-badge {
+      font-size: 11px;
+      color: var(--accent-green);
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--accent-green);
+      padding: 3px 8px;
+      border-radius: 20px;
+    }
+
+    /* Lightbox Modal (Fullscreen View) */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(6, 10, 20, 0.94);
+      backdrop-filter: blur(8px);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-modal img {
+      max-width: 92%;
+      max-height: 80vh;
+      border-radius: 12px;
+      border: 2px solid var(--accent-blue);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .lightbox-caption {
+      color: #f8fafc;
+      font-size: 15px;
+      font-weight: 600;
+      margin-top: 14px;
       text-align: center;
     }
 
-    .moments-gallery img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: block;
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      color: #cbd5e1;
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+      line-height: 1;
     }
 
-    .moments-gallery figcaption {
-      padding: 10px;
-      font-size: 12px;
-      color: var(--text-muted);
+    .lightbox-close:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.2);
     }
 
     /* CONTACT & QR */
@@ -492,7 +581,7 @@
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#experience">Timeline</a>
-      <a href="#education">Education</a>
+      <a href="#moments">Gallery</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -564,7 +653,7 @@
       </div>
     </section>
 
-    <!-- ABOUT SECTION (WITH DIRECT PHONE & EMAIL) -->
+    <!-- ABOUT SECTION -->
     <section id="about">
       <div class="section-title">
         <p>ABOUT ME</p>
@@ -590,7 +679,7 @@
       </div>
     </section>
 
-    <!-- 🕒 ATTRACTIVE CAREER TIMELINE -->
+    <!-- 🕒 CAREER TIMELINE -->
     <section id="experience">
       <div class="section-title">
         <p>CAREER JOURNEY</p>
@@ -598,7 +687,6 @@
       </div>
 
       <div class="timeline-container">
-        <!-- Milestone 1 -->
         <div class="timeline-step">
           <div class="timeline-node"></div>
           <div class="timeline-card">
@@ -609,7 +697,6 @@
           </div>
         </div>
 
-        <!-- Milestone 2 -->
         <div class="timeline-step">
           <div class="timeline-node"></div>
           <div class="timeline-card">
@@ -620,7 +707,6 @@
           </div>
         </div>
 
-        <!-- Milestone 3 -->
         <div class="timeline-step">
           <div class="timeline-node"></div>
           <div class="timeline-card">
@@ -631,7 +717,6 @@
           </div>
         </div>
 
-        <!-- Milestone 4 -->
         <div class="timeline-step">
           <div class="timeline-node"></div>
           <div class="timeline-card">
@@ -658,14 +743,29 @@
       </div>
     </section>
 
+    <!-- 📸 INTERACTIVE PHOTO GALLERY -->
     <section id="moments">
       <div class="section-title">
-        <p>PROFILE</p>
+        <p>PHOTO GALLERY</p>
         <h2>Professional Moments</h2>
       </div>
-      <div class="moments-gallery">
-        <figure><img alt="Prakash Jha seated" src="profile.jpg"><figcaption>Professional profile</figcaption></figure>
-        <figure><img alt="Prakash Jha working" src="profile-working.jpg"><figcaption>At the workstation</figcaption></figure>
+
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox('profile.jpg', 'Professional Profile — Prakash Jha')">
+          <img src="profile.jpg" alt="Prakash Jha Profile">
+          <div class="gallery-overlay">
+            <span class="gallery-caption">Professional Profile</span>
+            <span class="gallery-zoom-badge">🔍 Zoom</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('profile-working.jpg', 'Security Operations — Workstation Command')">
+          <img src="profile-working.jpg" alt="At the Workstation">
+          <div class="gallery-overlay">
+            <span class="gallery-caption">At Workstation</span>
+            <span class="gallery-zoom-badge">🔍 Zoom</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -701,8 +801,27 @@
     <p>© 2026 Prakash Jha. All rights reserved.</p>
   </footer>
 
-  <!-- 🚀 COUNTERS ANIMATION SCRIPT -->
+  <!-- 🖼️ FULLSCREEN LIGHTBOX MODAL -->
+  <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightboxImg" src="" alt="Enlarged View">
+    <div id="lightboxCaption" class="lightbox-caption"></div>
+  </div>
+
+  <!-- 🚀 JAVASCRIPT: LIGHTBOX & COUNTERS -->
   <script>
+    // Lightbox Logic
+    function openLightbox(imageSrc, captionText) {
+      document.getElementById('lightboxImg').src = imageSrc;
+      document.getElementById('lightboxCaption').innerText = captionText;
+      document.getElementById('lightboxModal').classList.add('active');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.remove('active');
+    }
+
+    // Counters Animation Logic
     const counters = document.querySelectorAll('.counter');
     let animated = false;
 
