@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -35,7 +35,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 6%;
+      padding: 14px 6%;
       background: rgba(10, 15, 29, 0.95);
       backdrop-filter: blur(10px);
       position: sticky;
@@ -51,10 +51,15 @@
       letter-spacing: 1px;
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      margin-left: 14px;
       font-size: 13px;
       font-weight: 600;
       transition: color 0.3s;
@@ -62,6 +67,27 @@
 
     .nav-links a:hover {
       color: var(--accent-green);
+    }
+
+    /* Language Switch Button */
+    .lang-toggle-btn {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent-blue);
+      border: 1px solid var(--accent-blue);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .lang-toggle-btn:hover {
+      background: var(--accent-blue);
+      color: #0b1329;
     }
 
     /* HERO */
@@ -320,7 +346,7 @@
       text-decoration: none;
     }
 
-    /* --- CAREER TIMELINE STYLING --- */
+    /* CAREER TIMELINE */
     .timeline-container {
       position: relative;
       margin: 20px 0 10px 10px;
@@ -410,7 +436,7 @@
       border-radius: 8px;
     }
 
-    /* --- 📸 FULLSCREEN PHOTO GALLERY STYLING --- */
+    /* GALLERY */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -471,7 +497,7 @@
       border-radius: 20px;
     }
 
-    /* Lightbox Modal (Fullscreen View) */
+    /* Lightbox Modal */
     .lightbox-modal {
       display: none;
       position: fixed;
@@ -520,11 +546,6 @@
       background: rgba(255, 255, 255, 0.08);
       border-radius: 50%;
       line-height: 1;
-    }
-
-    .lightbox-close:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.2);
     }
 
     /* CONTACT & QR */
@@ -578,28 +599,32 @@
 
   <nav>
     <div class="logo">PJ</div>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#experience">Timeline</a>
-      <a href="#moments">Gallery</a>
-      <a href="#contact">Contact</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#about" data-i18n="nav-about">About</a>
+        <a href="#experience" data-i18n="nav-timeline">Timeline</a>
+        <a href="#moments" data-i18n="nav-gallery">Gallery</a>
+        <a href="#contact" data-i18n="nav-contact">Contact</a>
+      </div>
+      <!-- 🌐 LANGUAGE SWITCH BUTTON -->
+      <button class="lang-toggle-btn" onclick="toggleLanguage()" id="langBtn">🌐 हिंदी</button>
     </div>
   </nav>
 
   <header>
     <div class="hero-content">
       <div class="hero-text">
-        <p class="hero-tag">PHYSICAL & ELECTRONIC SECURITY PROFESSIONAL</p>
-        <h1>Prakash Jha</h1>
-        <p class="hero-sub">8+ Years of Professional Experience in Physical & Electronic Security</p>
+        <p class="hero-tag" data-i18n="hero-tag">PHYSICAL & ELECTRONIC SECURITY PROFESSIONAL</p>
+        <h1 data-i18n="hero-name">Prakash Jha</h1>
+        <p class="hero-sub" data-i18n="hero-sub">8+ Years of Professional Experience in Physical & Electronic Security</p>
         <div class="hero-pills">
-          <span>📍 Saket, New Delhi</span>
-          <span>🏠 Sitamarhi, Bihar</span>
-          <span>🎓 B.Sc. — IGNOU Open University</span>
+          <span data-i18n="pill-loc">📍 Saket, New Delhi</span>
+          <span data-i18n="pill-home">🏠 Sitamarhi, Bihar</span>
+          <span data-i18n="pill-edu">🎓 B.Sc. — IGNOU Open University</span>
         </div>
         <div class="hero-actions">
-          <a href="#experience" class="btn btn-primary">View Timeline</a>
-          <a href="resume.pdf" download="Prakash_Jha_CV.pdf" class="btn btn-secondary">📄 Download CV</a>
+          <a href="#experience" class="btn btn-primary" data-i18n="btn-timeline">View Timeline</a>
+          <a href="resume.pdf" download="Prakash_Jha_CV.pdf" class="btn btn-secondary" data-i18n="btn-cv">📄 Download CV</a>
         </div>
       </div>
 
@@ -608,17 +633,17 @@
         <div class="security-id-card">
           <div class="id-card-header">
             <div class="id-chip"></div>
-            <span class="badge-status">● VERIFIED AGENT</span>
+            <span class="badge-status" data-i18n="badge-status">● VERIFIED AGENT</span>
           </div>
           <div class="id-photo-frame">
             <img src="profile.jpg" alt="Prakash Jha" class="id-photo">
           </div>
           <div class="id-details">
-            <h3>PRAKASH JHA</h3>
-            <p class="id-role">PHYSICAL & ELECTRONIC SECURITY</p>
+            <h3 data-i18n="id-name">PRAKASH JHA</h3>
+            <p class="id-role" data-i18n="id-role">PHYSICAL & ELECTRONIC SECURITY</p>
             <div class="id-meta">
-              <div><span>EXP:</span> 8+ YEARS</div>
-              <div><span>LOC:</span> NEW DELHI</div>
+              <div><span data-i18n="id-exp-lbl">EXP:</span> 8+ <span data-i18n="id-years-lbl">YEARS</span></div>
+              <div><span data-i18n="id-loc-lbl">LOC:</span> NEW DELHI</div>
             </div>
           </div>
           <div class="id-barcode">
@@ -636,19 +661,19 @@
       <div class="counter-grid">
         <div class="counter-box">
           <div class="counter-number"><span class="counter" data-target="8">0</span>+</div>
-          <p class="counter-label">Years Experience</p>
+          <p class="counter-label" data-i18n="counter-1">Years Experience</p>
         </div>
         <div class="counter-box">
           <div class="counter-number"><span class="counter" data-target="4">0</span></div>
-          <p class="counter-label">Organizations</p>
+          <p class="counter-label" data-i18n="counter-2">Organizations</p>
         </div>
         <div class="counter-box">
           <div class="counter-number"><span class="counter" data-target="100">0</span>%</div>
-          <p class="counter-label">Ops Secured</p>
+          <p class="counter-label" data-i18n="counter-3">Ops Secured</p>
         </div>
         <div class="counter-box">
           <div class="counter-number"><span class="counter" data-target="24">0</span>/7</div>
-          <p class="counter-label">Surveillance</p>
+          <p class="counter-label" data-i18n="counter-4">Surveillance</p>
         </div>
       </div>
     </section>
@@ -656,25 +681,24 @@
     <!-- ABOUT SECTION -->
     <section id="about">
       <div class="section-title">
-        <p>ABOUT ME</p>
-        <h2>Professional Profile</h2>
+        <p data-i18n="about-tag">ABOUT ME</p>
+        <h2 data-i18n="about-title">Professional Profile</h2>
       </div>
       <div class="about-card">
-        <h3>Personal Details</h3>
+        <h3 data-i18n="details-title">Personal Details</h3>
         <div class="details-list">
-          <div><strong>Name:</strong> <span>Prakash Jha</span></div>
-          <div><strong>Son of:</strong> <span>Vinay Jha</span></div>
-          <div><strong>Phone:</strong> <a href="tel:+918882970842">+91 8882970842</a></div>
-          <div><strong>Email:</strong> <a href="mailto:iamprakashkumarjha@gmail.com">iamprakashkumarjha@gmail.com</a></div>
-          <div><strong>Hometown:</strong> <span>Sitamarhi, Bihar</span></div>
-          <div><strong>Living in:</strong> <span>Saket, New Delhi</span></div>
+          <div><strong data-i18n="lbl-name">Name:</strong> <span data-i18n="val-name">Prakash Jha</span></div>
+          <div><strong data-i18n="lbl-father">Son of:</strong> <span data-i18n="val-father">Vinay Jha</span></div>
+          <div><strong data-i18n="lbl-phone">Phone:</strong> <a href="tel:+918882970842">+91 8882970842</a></div>
+          <div><strong data-i18n="lbl-email">Email:</strong> <a href="mailto:iamprakashkumarjha@gmail.com">iamprakashkumarjha@gmail.com</a></div>
+          <div><strong data-i18n="lbl-hometown">Hometown:</strong> <span data-i18n="val-hometown">Sitamarhi, Bihar</span></div>
+          <div><strong data-i18n="lbl-living">Living in:</strong> <span data-i18n="val-living">Saket, New Delhi</span></div>
         </div>
       </div>
       <div class="about-card">
-        <h3>Career Summary</h3>
-        <p style="color: var(--text-muted); font-size: 14px;">
-          Security professional with <strong>8+ years</strong> of experience across
-          physical security and electronic security environments. Experienced in corporate workplaces and mission-critical operations.
+        <h3 data-i18n="summary-title">Career Summary</h3>
+        <p style="color: var(--text-muted); font-size: 14px;" data-i18n="summary-text">
+          Security professional with <strong>8+ years</strong> of experience across physical security and electronic security environments. Experienced in corporate workplaces and mission-critical operations.
         </p>
       </div>
     </section>
@@ -682,88 +706,93 @@
     <!-- 🕒 CAREER TIMELINE -->
     <section id="experience">
       <div class="section-title">
-        <p>CAREER JOURNEY</p>
-        <h2>Professional Timeline</h2>
+        <p data-i18n="timeline-tag">CAREER JOURNEY</p>
+        <h2 data-i18n="timeline-title">Professional Timeline</h2>
       </div>
 
       <div class="timeline-container">
+        <!-- Milestone 1 -->
         <div class="timeline-step">
           <div class="timeline-node"></div>
           <div class="timeline-card">
-            <span class="timeline-badge">STEP 01 • TELECOM & INFRA</span>
+            <span class="timeline-badge" data-i18n="t-badge-1">STEP 01 • TELECOM & INFRA</span>
             <h3>Tata Communications</h3>
-            <p>📍 G.K.1, New Delhi</p>
-            <span class="timeline-tag">Physical & Electronic Security</span>
+            <p data-i18n="t-loc-1">📍 G.K.1, New Delhi</p>
+            <span class="timeline-tag" data-i18n="t-role-1">Physical & Electronic Security</span>
           </div>
         </div>
 
+        <!-- Milestone 2 -->
         <div class="timeline-step">
           <div class="timeline-node"></div>
           <div class="timeline-card">
-            <span class="timeline-badge">STEP 02 • TECH GIANT</span>
+            <span class="timeline-badge" data-i18n="t-badge-2">STEP 02 • TECH GIANT</span>
             <h3>Facebook</h3>
-            <p>📍 New Delhi, India</p>
-            <span class="timeline-tag">Physical & Electronic Security</span>
+            <p data-i18n="t-loc-2">📍 New Delhi, India</p>
+            <span class="timeline-tag" data-i18n="t-role-2">Physical & Electronic Security</span>
           </div>
         </div>
 
+        <!-- Milestone 3 -->
         <div class="timeline-step">
           <div class="timeline-node"></div>
           <div class="timeline-card">
-            <span class="timeline-badge">STEP 03 • GLOBAL LEADER</span>
+            <span class="timeline-badge" data-i18n="t-badge-3">STEP 03 • GLOBAL LEADER</span>
             <h3>Google</h3>
-            <p>📍 Gurgaon, India</p>
-            <span class="timeline-tag">Physical & Electronic Security</span>
+            <p data-i18n="t-loc-3">📍 Gurgaon, India</p>
+            <span class="timeline-tag" data-i18n="t-role-3">Physical & Electronic Security</span>
           </div>
         </div>
 
+        <!-- Milestone 4 -->
         <div class="timeline-step">
           <div class="timeline-node"></div>
           <div class="timeline-card">
-            <span class="timeline-badge">STEP 04 • OPERATIONS</span>
+            <span class="timeline-badge" data-i18n="t-badge-4">STEP 04 • OPERATIONS</span>
             <h3>ACL</h3>
-            <p>📍 Gurgaon, India</p>
-            <span class="timeline-tag">Physical & Electronic Security</span>
+            <p data-i18n="t-loc-4">📍 Gurgaon, India</p>
+            <span class="timeline-tag" data-i18n="t-role-4">Physical & Electronic Security</span>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- EDUCATION -->
     <section id="education">
       <div class="section-title">
-        <p>EDUCATION</p>
-        <h2>Academic Background</h2>
+        <p data-i18n="edu-tag">EDUCATION</p>
+        <h2 data-i18n="edu-title">Academic Background</h2>
       </div>
       <div class="edu-card">
         <div class="edu-badge">B.Sc.</div>
         <div>
-          <h3 style="color:#fff; font-size:16px;">Bachelor of Science</h3>
-          <p style="color:var(--text-muted); font-size:13px;">IGNOU Open University</p>
+          <h3 style="color:#fff; font-size:16px;" data-i18n="edu-degree">Bachelor of Science</h3>
+          <p style="color:var(--text-muted); font-size:13px;" data-i18n="edu-univ">IGNOU Open University</p>
         </div>
       </div>
     </section>
 
-    <!-- 📸 INTERACTIVE PHOTO GALLERY -->
+    <!-- 📸 PHOTO GALLERY -->
     <section id="moments">
       <div class="section-title">
-        <p>PHOTO GALLERY</p>
-        <h2>Professional Moments</h2>
+        <p data-i18n="gallery-tag">PHOTO GALLERY</p>
+        <h2 data-i18n="gallery-title">Professional Moments</h2>
       </div>
 
       <div class="gallery-grid">
         <div class="gallery-item" onclick="openLightbox('profile.jpg', 'Professional Profile — Prakash Jha')">
           <img src="profile.jpg" alt="Prakash Jha Profile">
           <div class="gallery-overlay">
-            <span class="gallery-caption">Professional Profile</span>
-            <span class="gallery-zoom-badge">🔍 Zoom</span>
+            <span class="gallery-caption" data-i18n="caption-1">Professional Profile</span>
+            <span class="gallery-zoom-badge" data-i18n="zoom-text">🔍 Zoom</span>
           </div>
         </div>
 
         <div class="gallery-item" onclick="openLightbox('profile-working.jpg', 'Security Operations — Workstation Command')">
           <img src="profile-working.jpg" alt="At the Workstation">
           <div class="gallery-overlay">
-            <span class="gallery-caption">At Workstation</span>
-            <span class="gallery-zoom-badge">🔍 Zoom</span>
+            <span class="gallery-caption" data-i18n="caption-2">At Workstation</span>
+            <span class="gallery-zoom-badge" data-i18n="zoom-text">🔍 Zoom</span>
           </div>
         </div>
       </div>
@@ -772,33 +801,33 @@
     <!-- DIRECT CONTACT & QR CODE -->
     <section id="contact">
       <div class="section-title">
-        <p>GET IN TOUCH</p>
-        <h2>Quick Connect & Verification</h2>
+        <p data-i18n="contact-tag">GET IN TOUCH</p>
+        <h2 data-i18n="contact-title">Quick Connect & Verification</h2>
       </div>
 
       <div class="quick-connect-box">
-        <h3 style="color: #fff; margin-bottom: 8px;">Direct Communication</h3>
-        <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 16px;">Available for corporate security operations.</p>
-        <a href="https://wa.me/918882970842?text=Hi%20Prakash,%20I%20visited%20your%20security%20portfolio." target="_blank" class="btn-whatsapp">
+        <h3 style="color: #fff; margin-bottom: 8px;" data-i18n="direct-comm-title">Direct Communication</h3>
+        <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 16px;" data-i18n="direct-comm-sub">Available for corporate security operations.</p>
+        <a href="https://wa.me/918882970842?text=Hi%20Prakash,%20I%20visited%20your%20security%20portfolio." target="_blank" class="btn-whatsapp" data-i18n="btn-whatsapp-text">
           💬 Chat on WhatsApp (+91 8882970842)
         </a>
-        <a href="mailto:iamprakashkumarjha@gmail.com" class="btn-email">
+        <a href="mailto:iamprakashkumarjha@gmail.com" class="btn-email" data-i18n="btn-email-text">
           ✉️ Send Email (iamprakashkumarjha@gmail.com)
         </a>
       </div>
 
       <div class="qr-card" style="text-align: center;">
-        <h3 style="color: #fff; font-size: 16px;">Scan Digital Portfolio</h3>
+        <h3 style="color: #fff; font-size: 16px;" data-i18n="qr-title">Scan Digital Portfolio</h3>
         <div class="qr-frame">
           <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://prakash-jha-website.github.io/prakash-jha-website/" alt="QR Code">
         </div>
-        <p style="font-size: 11px; color: var(--text-muted);">Saket, New Delhi</p>
+        <p style="font-size: 11px; color: var(--text-muted);" data-i18n="qr-sub">Saket, New Delhi</p>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 Prakash Jha. All rights reserved.</p>
+    <p data-i18n="footer-text">© 2026 Prakash Jha. All rights reserved.</p>
   </footer>
 
   <!-- 🖼️ FULLSCREEN LIGHTBOX MODAL -->
@@ -808,8 +837,185 @@
     <div id="lightboxCaption" class="lightbox-caption"></div>
   </div>
 
-  <!-- 🚀 JAVASCRIPT: LIGHTBOX & COUNTERS -->
+  <!-- 🚀 JAVASCRIPT: LANGUAGE SWITCH, LIGHTBOX & COUNTERS -->
   <script>
+    // 🌐 Multi-Language Dictionary (English & Hindi)
+    const translations = {
+      en: {
+        "nav-about": "About",
+        "nav-timeline": "Timeline",
+        "nav-gallery": "Gallery",
+        "nav-contact": "Contact",
+        "hero-tag": "PHYSICAL & ELECTRONIC SECURITY PROFESSIONAL",
+        "hero-name": "Prakash Jha",
+        "hero-sub": "8+ Years of Professional Experience in Physical & Electronic Security",
+        "pill-loc": "📍 Saket, New Delhi",
+        "pill-home": "🏠 Sitamarhi, Bihar",
+        "pill-edu": "🎓 B.Sc. — IGNOU Open University",
+        "btn-timeline": "View Timeline",
+        "btn-cv": "📄 Download CV",
+        "badge-status": "● VERIFIED AGENT",
+        "id-name": "PRAKASH JHA",
+        "id-role": "PHYSICAL & ELECTRONIC SECURITY",
+        "id-exp-lbl": "EXP:",
+        "id-years-lbl": "YEARS",
+        "id-loc-lbl": "LOC:",
+        "counter-1": "Years Experience",
+        "counter-2": "Organizations",
+        "counter-3": "Ops Secured",
+        "counter-4": "Surveillance",
+        "about-tag": "ABOUT ME",
+        "about-title": "Professional Profile",
+        "details-title": "Personal Details",
+        "lbl-name": "Name:",
+        "val-name": "Prakash Jha",
+        "lbl-father": "Son of:",
+        "val-father": "Vinay Jha",
+        "lbl-phone": "Phone:",
+        "lbl-email": "Email:",
+        "lbl-hometown": "Hometown:",
+        "val-hometown": "Sitamarhi, Bihar",
+        "lbl-living": "Living in:",
+        "val-living": "Saket, New Delhi",
+        "summary-title": "Career Summary",
+        "summary-text": "Security professional with <strong>8+ years</strong> of experience across physical security and electronic security environments. Experienced in corporate workplaces and mission-critical operations.",
+        "timeline-tag": "CAREER JOURNEY",
+        "timeline-title": "Professional Timeline",
+        "t-badge-1": "STEP 01 • TELECOM & INFRA",
+        "t-loc-1": "📍 G.K.1, New Delhi",
+        "t-role-1": "Physical & Electronic Security",
+        "t-badge-2": "STEP 02 • TECH GIANT",
+        "t-loc-2": "📍 New Delhi, India",
+        "t-role-2": "Physical & Electronic Security",
+        "t-badge-3": "STEP 03 • GLOBAL LEADER",
+        "t-loc-3": "📍 Gurgaon, India",
+        "t-role-3": "Physical & Electronic Security",
+        "t-badge-4": "STEP 04 • OPERATIONS",
+        "t-loc-4": "📍 Gurgaon, India",
+        "t-role-4": "Physical & Electronic Security",
+        "edu-tag": "EDUCATION",
+        "edu-title": "Academic Background",
+        "edu-degree": "Bachelor of Science",
+        "edu-univ": "IGNOU Open University",
+        "gallery-tag": "PHOTO GALLERY",
+        "gallery-title": "Professional Moments",
+        "caption-1": "Professional Profile",
+        "caption-2": "At Workstation",
+        "zoom-text": "🔍 Zoom",
+        "contact-tag": "GET IN TOUCH",
+        "contact-title": "Quick Connect & Verification",
+        "direct-comm-title": "Direct Communication",
+        "direct-comm-sub": "Available for corporate security operations.",
+        "btn-whatsapp-text": "💬 Chat on WhatsApp (+91 8882970842)",
+        "btn-email-text": "✉️ Send Email (iamprakashkumarjha@gmail.com)",
+        "qr-title": "Scan Digital Portfolio",
+        "qr-sub": "Saket, New Delhi",
+        "footer-text": "© 2026 Prakash Jha. All rights reserved."
+      },
+      hi: {
+        "nav-about": "परिचय",
+        "nav-timeline": "करियर टाइमलाइन",
+        "nav-gallery": "गैलरी",
+        "nav-contact": "संपर्क",
+        "hero-tag": "फिजिकल एवं इलेक्ट्रॉनिक सुरक्षा विशेषज्ञ",
+        "hero-name": "प्रकाश झा",
+        "hero-sub": "फिजिकल और इलेक्ट्रॉनिक सिक्योरिटी में 8+ वर्षों का पेशेवर अनुभव",
+        "pill-loc": "📍 साकेत, नई दिल्ली",
+        "pill-home": "🏠 सीतामढ़ी, बिहार",
+        "pill-edu": "🎓 बी.एससी. — इग्नू ओपन यूनिवर्सिटी",
+        "btn-timeline": "टाइमलाइन देखें",
+        "btn-cv": "📄 सीवी डाउनलोड करें",
+        "badge-status": "● सत्यापित एजेंट (VERIFIED)",
+        "id-name": "प्रकाश झा",
+        "id-role": "फिजिकल एवं इलेक्ट्रॉनिक सुरक्षा",
+        "id-exp-lbl": "अनुभव:",
+        "id-years-lbl": "वर्ष",
+        "id-loc-lbl": "स्थान:",
+        "counter-1": "वर्षों का अनुभव",
+        "counter-2": "शीर्ष संस्थान",
+        "counter-3": "सुरक्षित ऑपरेशंस",
+        "counter-4": "24/7 निगरानी",
+        "about-tag": "मेरे बारे में",
+        "about-title": "प्रोफेशनल प्रोफाइल",
+        "details-title": "व्यक्तिगत विवरण",
+        "lbl-name": "नाम:",
+        "val-name": "प्रकाश झा",
+        "lbl-father": "पिता का नाम:",
+        "val-father": "विनय झा",
+        "lbl-phone": "मोबाइल:",
+        "lbl-email": "ईमेल:",
+        "lbl-hometown": "गृह नगर:",
+        "val-hometown": "सीतामढ़ी, बिहार",
+        "lbl-living": "वर्तमान निवास:",
+        "val-living": "साकेत, नई दिल्ली",
+        "summary-title": "करियर का सारांश",
+        "summary-text": "फिजिकल और इलेक्ट्रॉनिक सिक्योरिटी में <strong>8+ वर्षों</strong> के अनुभव के साथ सुरक्षा पेशेवर। कॉर्पोरेट कार्यस्थलों और उच्च सुरक्षा संचालन में सिद्ध ट्रैक रिकॉर्ड।",
+        "timeline-tag": "करियर यात्रा",
+        "timeline-title": "प्रोफेशनल टाइमलाइन",
+        "t-badge-1": "चरण 01 • टेलीकॉम और इन्फ्रा",
+        "t-loc-1": "📍 जी.के.1, नई दिल्ली",
+        "t-role-1": "फिजिकल एवं इलेक्ट्रॉनिक सुरक्षा",
+        "t-badge-2": "चरण 02 • टेक दिग्गज",
+        "t-loc-2": "📍 नई दिल्ली, भारत",
+        "t-role-2": "फिजिकल एवं इलेक्ट्रॉनिक सुरक्षा",
+        "t-badge-3": "चरण 03 • ग्लोबल लीडर",
+        "t-loc-3": "📍 गुड़गांव, भारत",
+        "t-role-3": "फिजिकल एवं इलेक्ट्रॉनिक सुरक्षा",
+        "t-badge-4": "चरण 04 • ऑपरेशंस",
+        "t-loc-4": "📍 गुड़गांव, भारत",
+        "t-role-4": "फिजिकल एवं इलेक्ट्रॉनिक सुरक्षा",
+        "edu-tag": "शैक्षणिक योग्यता",
+        "edu-title": "एकेडमिक बैकग्राउंड",
+        "edu-degree": "बैचलर ऑफ साइंस (B.Sc.)",
+        "edu-univ": "इग्नू ओपन यूनिवर्सिटी",
+        "gallery-tag": "फोटो गैलरी",
+        "gallery-title": "कार्यक्षेत्र के पल",
+        "caption-1": "प्रोफेशनल प्रोफाइल",
+        "caption-2": "वर्कस्टेशन पर सुरक्षा कमान",
+        "zoom-text": "🔍 बड़ा देखें",
+        "contact-tag": "संपर्क करें",
+        "contact-title": "क्विक कनेक्ट और वेरिफिकेशन",
+        "direct-comm-title": "सीधा संवाद",
+        "direct-comm-sub": "कॉर्पोरेट सुरक्षा ऑपरेशंस और कंसल्टिंग के लिए उपलब्ध।",
+        "btn-whatsapp-text": "💬 व्हाट्सएप पर बात करें (+91 8882970842)",
+        "btn-email-text": "✉️ ईमेल भेजें (iamprakashkumarjha@gmail.com)",
+        "qr-title": "डिजिटल पोर्टफोलियो स्कैन करें",
+        "qr-sub": "साकेत, नई दिल्ली",
+        "footer-text": "© 2026 प्रकाश झा। सर्वाधिकार सुरक्षित।"
+      }
+    };
+
+    let currentLang = localStorage.getItem('site_lang') || 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('site_lang', lang);
+      const elements = document.querySelectorAll('[data-i18n]');
+      
+      elements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+
+      const langBtn = document.getElementById('langBtn');
+      if (lang === 'en') {
+        langBtn.innerText = '🌐 हिंदी';
+      } else {
+        langBtn.innerText = '🌐 English';
+      }
+    }
+
+    function toggleLanguage() {
+      setLanguage(currentLang === 'en' ? 'hi' : 'en');
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', () => {
+      setLanguage(currentLang);
+    });
+
     // Lightbox Logic
     function openLightbox(imageSrc, captionText) {
       document.getElementById('lightboxImg').src = imageSrc;
